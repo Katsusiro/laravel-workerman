@@ -15,4 +15,12 @@ return [
 	'events' => [
 		App\Events\SendChatMessage::class,
 	],
+
+	'use_ssl' => false,
+
+	'ssl' => [
+        'local_cert'  => '/your/path/of/server.pem',
+        'local_pk'    => '/your/path/of/server.key',
+        'verify_peer' => false
+	]
 ];
