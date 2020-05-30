@@ -15,9 +15,16 @@ class LaravelWorkermanServer extends SocketIO
 	public static function start() {
 		$port = Config::get('laravel-workerman.server.port');
 		$events = Config::get('laravel-workerman.events');
+		$use_ssl = Config::get('laravel-workerman.use_ssl');
+		$ssl = Config::get('laravel-workerman.ssl');
 		
-		$server = new Self($port);
-		
+		if ($use_ssl) {
+			$server = new Self($port, [$ssl]);
+		}
+		else {
+			$server = new Self($port);
+		}
+
 		foreach ($events as $event) {
 			new $event($server);
 		}
