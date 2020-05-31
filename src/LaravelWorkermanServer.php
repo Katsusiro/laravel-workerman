@@ -19,7 +19,7 @@ class LaravelWorkermanServer extends SocketIO
 		$ssl = Config::get('laravel-workerman.ssl');
 		
 		if ($use_ssl) {
-			$server = new Self($port, [$ssl]);
+			$server = new Self($port, ['ssl' => $ssl]);
 		}
 		else {
 			$server = new Self($port);
